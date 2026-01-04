@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZiezGeek Aldevinc | Trusted Tech Since 2018</title>
+  <meta name="description" content="ZiezGeek Aldevinc – iCloud & Android Unlocking, iOS & Android Repairs, Hardware and Software Solutions in Mpumalanga." />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    header img {
+      width: 160px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    header p {
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .services, .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 35px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+    .card i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #25D366;
+    }
+    .about, .booking {
+      text-align: center;
+      line-height: 1.8;
+    }
+    .booking form {
+      max-width: 600px;
+      margin: 30px auto;
+      display: grid;
+      gap: 15px;
+    }
+    .booking input, .booking textarea, .booking button {
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+    }
+    .booking button {
+      background: #25D366;
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    footer {
+      background: rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #000;
+      padding: 15px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+<header data-aos="fade-down">
+  <img src="logo.png" alt="ZiezGeek Aldevinc Logo">
+  <h1>ZiezGeek Aldevinc 🚀</h1>
+  <p>🔐 iCloud & Android Unlocking • 📱 iOS & Android Repairs</p>
+  <p>🛠️ Hardware • Software • Solutions</p>
+</header>
+
+<section>
+  <div class="services">
+    <div class="card" data-aos="fade-up"><i class="fas fa-lock"></i><h3>Device Unlocking</h3><p>Safe and professional iCloud & Android unlocking.</p></div>
+    <div class="card" data-aos="fade-up"><i class="fas fa-mobile"></i><h3>Phone Repairs</h3><p>Screen, battery and system repairs.</p></div>
+    <div class="card" data-aos="fade-up"><i class="fas fa-microchip"></i><h3>Software Fixes</h3><p>Flashing, firmware and OS solutions.</p></div>
+    <div class="card" data-aos="fade-up"><i class="fas fa-tools"></i><h3>Hardware Repairs</h3><p>Professional diagnostics & fixes.</p></div>
+  </div>
+</section>
+
+<section class="about" data-aos="zoom-in">
+  <h2>Trusted Tech Since 2018</h2>
+  <p>Based in Mpumalanga, Evander. Reliable tech solutions you can trust.</p>
+</section>
+
+<section>
+  <h2 style="text-align:center;margin-bottom:30px;">Client Reviews ⭐</h2>
+  <div class="reviews">
+    <div class="card" data-aos="flip-left">"Fast and reliable service!"<br><strong>- Thabo M</strong></div>
+    <div class="card" data-aos="flip-left">"My phone was fixed same day."<br><strong>- Lerato K</strong></div>
+    <div class="card" data-aos="flip-left">"Best unlocking service."<br><strong>- Sibusiso N</strong></div>
+  </div>
+</section>
+
+<section class="booking" data-aos="fade-up">
+  <h2>Book a Service 📅</h2>
+  <form onsubmit="event.preventDefault(); window.location.href='https://wa.me/27719549523';">
+    <input type="text" placeholder="Your Name" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <textarea placeholder="Describe your issue" required></textarea>
+    <button type="submit">Book via WhatsApp</button>
+  </form>
+</section>
+
+<footer>
+  <p>📍 Mpumalanga | Evander</p>
+  <p>📞 071 954 9523 | 📧 ziezgeek@gmail.com</p>
+  <p>© 2018 – ZiezGeek Aldevinc</p>
+</footer>
+
+<a class="whatsapp-btn" href="https://wa.me/27719549523" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1000, once: true });</script>
+
+</body>
+</html>
