@@ -9,358 +9,154 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-scroll-behavior:smooth;
-}
+*{margin:0; padding:0; box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:white; scroll-behavior:smooth;}
 
 /* NAVBAR */
-
-.navbar{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 40px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-.logo{
-font-weight:700;
-font-size:22px;
-color:#25D366;
-}
-
-.nav-links{
-list-style:none;
-display:flex;
-gap:25px;
-}
-
-.nav-links a{
-text-decoration:none;
-color:white;
-transition:.3s;
-}
-
-.nav-links a:hover{
-color:#25D366;
-}
+.navbar{position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:15px 40px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px); z-index:1000;}
+.navbar .logo img{height:40px;}
+.nav-links{list-style:none; display:flex; gap:25px;}
+.nav-links a{text-decoration:none; color:white; transition:.3s;}
+.nav-links a:hover{color:#25D366;}
 
 /* HEADER */
-
-header{
-text-align:center;
-padding:160px 20px 100px;
-}
-
-header h1{
-font-size:48px;
-text-shadow:0 0 20px #25D366;
-}
+header{text-align:center; padding:160px 20px 100px;}
+header h1{font-size:48px; text-shadow:0 0 20px #25D366;}
+header .logo-img{width:160px; margin-bottom:20px;}
 
 /* BUTTON */
-
-.glow-btn{
-background:#25D366;
-color:black;
-padding:14px 28px;
-border-radius:30px;
-font-weight:700;
-text-decoration:none;
-display:inline-block;
-margin-top:20px;
-box-shadow:0 0 10px #25D366;
-}
+.glow-btn{background:#25D366; color:black; padding:14px 28px; border-radius:30px; font-weight:700; text-decoration:none; display:inline-block; margin-top:20px; box-shadow:0 0 10px #25D366;}
 
 /* SECTIONS */
-
-section{
-padding:70px 20px;
-max-width:1200px;
-margin:auto;
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+section{padding:70px 20px; max-width:1200px; margin:auto;}
+.services{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;}
 
 /* CARDS */
-
-.card{
-background:rgba(255,255,255,0.08);
-border-radius:20px;
-padding:30px;
-text-align:center;
-transition:.4s;
-}
-
-.card:hover{
-transform:scale(1.05);
-box-shadow:0 25px 50px rgba(0,0,0,0.5);
-}
-
-.card i{
-font-size:35px;
-margin-bottom:15px;
-color:#25D366;
-}
+.card{background:rgba(255,255,255,0.08); border-radius:20px; padding:30px; text-align:center; transition:.4s;}
+.card:hover{transform:scale(1.05); box-shadow:0 25px 50px rgba(0,0,0,0.5);}
+.card i{font-size:35px; margin-bottom:15px; color:#25D366;}
 
 /* LOADER */
-
-#loader{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#0f2027;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:9999;
-transition:opacity 0.5s;
-}
-
-.spinner{
-border:6px solid #333;
-border-top:6px solid #25D366;
-border-radius:50%;
-width:60px;
-height:60px;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-0%{transform:rotate(0)}
-100%{transform:rotate(360deg)}
-}
+#loader{position:fixed; top:0; left:0; width:100%; height:100%; background:#0f2027; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; transition:opacity 0.5s;}
+.spinner{border:6px solid #333; border-top:6px solid #25D366; border-radius:50%; width:60px; height:60px; animation:spin 1s linear infinite;}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
 /* SCROLL BUTTON */
-
-#topBtn{
-position:fixed;
-bottom:20px;
-left:20px;
-padding:12px 16px;
-border:none;
-border-radius:50%;
-background:#25D366;
-cursor:pointer;
-display:none;
-}
+#topBtn{position:fixed; bottom:20px; left:20px; padding:12px 16px; border:none; border-radius:50%; background:#25D366; cursor:pointer; display:none;}
 
 /* FOOTER */
-
-footer{
-background:rgba(0,0,0,0.6);
-text-align:center;
-padding:40px 20px;
-margin-top:50px;
-}
-
+footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-top:50px;}
 </style>
 </head>
 
 <body>
 
 <!-- LOADER -->
-
 <div id="loader">
-<div class="spinner"></div>
-<p>Loading ZiezGeek...</p>
+  <div class="spinner"></div>
+  <p>Loading ZiezGeek...</p>
 </div>
 
 <!-- NAVBAR -->
-
 <nav class="navbar">
-
-<div class="logo">ZiezGeek</div>
-
-<ul class="nav-links">
-<li><a href="#">Home</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#prices">Prices</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
+  <div class="logo">
+    <img src="logo.png" alt="ZiezGeek Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#prices">Prices</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HEADER -->
-
 <header>
-
-<h1>ZiezGeek Aldevinc 🚀</h1>
-
-<p id="typing"></p>
-
-<a class="glow-btn" href="https://wa.me/27719549523">Book Repair</a>
-
+  <img src="logo.png" alt="ZiezGeek Logo" class="logo-img">
+  <h1>ZiezGeek Aldevinc 🚀</h1>
+  <p id="typing"></p>
+  <a class="glow-btn" href="https://wa.me/27719549523">Book Repair</a>
 </header>
 
 <!-- SERVICES -->
-
 <section id="services">
-
 <h2 style="text-align:center;margin-bottom:30px;">Our Services</h2>
-
 <div class="services">
-
-<div class="card">
-<i class="fas fa-lock"></i>
-<h3>Device Unlocking</h3>
-<p>iCloud & Android unlocking services.</p>
+  <div class="card"><i class="fas fa-lock"></i><h3>Device Unlocking</h3><p>iCloud & Android unlocking services.</p></div>
+  <div class="card"><i class="fas fa-mobile"></i><h3>Phone Repairs</h3><p>Screen and battery replacements.</p></div>
+  <div class="card"><i class="fas fa-microchip"></i><h3>Software Fix</h3><p>Firmware flashing and OS repair.</p></div>
+  <div class="card"><i class="fas fa-tools"></i><h3>Hardware Repair</h3><p>Diagnostics and board repair.</p></div>
 </div>
-
-<div class="card">
-<i class="fas fa-mobile"></i>
-<h3>Phone Repairs</h3>
-<p>Screen and battery replacements.</p>
-</div>
-
-<div class="card">
-<i class="fas fa-microchip"></i>
-<h3>Software Fix</h3>
-<p>Firmware flashing and OS repair.</p>
-</div>
-
-<div class="card">
-<i class="fas fa-tools"></i>
-<h3>Hardware Repair</h3>
-<p>Diagnostics and board repair.</p>
-</div>
-
-</div>
-
 </section>
 
 <!-- PRICES -->
-
 <section id="prices">
-
 <h2 style="text-align:center;margin-bottom:30px;">Repair Prices</h2>
-
 <div class="services">
-
-<div class="card"><h3>Screen Repair</h3><p>From R150</p></div>
-<div class="card"><h3>iPhone Unlock</h3><p>From R200</p></div>
-<div class="card"><h3>Software Flash</h3><p>From R120</p></div>
-<div class="card"><h3>Battery Replacement</h3><p>From R180</p></div>
-
+  <div class="card"><h3>Screen Repair</h3><p>From R150</p></div>
+  <div class="card"><h3>iPhone Unlock</h3><p>From R200</p></div>
+  <div class="card"><h3>Software Flash</h3><p>From R120</p></div>
+  <div class="card"><h3>Battery Replacement</h3><p>From R180</p></div>
 </div>
-
 </section>
 
 <!-- REVIEWS -->
-
 <section id="reviews">
-
 <h2 style="text-align:center;margin-bottom:30px;">Client Reviews</h2>
-
 <div class="services">
-
-<div class="card">⭐️⭐️⭐️⭐️⭐️<br>Fast service!</div>
-<div class="card">⭐️⭐️⭐️⭐️⭐️<br>Phone fixed same day.</div>
-<div class="card">⭐️⭐️⭐️⭐️⭐️<br>Best unlocking service.</div>
-
+  <div class="card">⭐️⭐️⭐️⭐️⭐️<br>Fast service!</div>
+  <div class="card">⭐️⭐️⭐️⭐️⭐️<br>Phone fixed same day.</div>
+  <div class="card">⭐️⭐️⭐️⭐️⭐️<br>Best unlocking service.</div>
 </div>
-
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact">
-
 <h2 style="text-align:center;margin-bottom:30px;">Find Us</h2>
-
-<iframe src="https://www.google.com/maps?q=Evander,Mpumalanga&output=embed"
-width="100%" height="350"
-style="border:0;border-radius:20px;">
-</iframe>
-
+<iframe src="https://www.google.com/maps?q=Evander,Mpumalanga&output=embed" width="100%" height="350" style="border:0;border-radius:20px;"></iframe>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
-
 <p>📍 Mpumalanga | Evander</p>
 <p>📞 071 954 9523</p>
 <p>📧 ziezgeek@gmail.com</p>
-
 <p>© <span id="year"></span> ZiezGeek Aldevinc. All Rights Reserved.</p>
-
 </footer>
 
 <!-- SCROLL BUTTON -->
-
 <button onclick="topFunction()" id="topBtn">⬆</button>
 
 <script>
-
 /* LOADER FIX */
-
 window.onload=function(){
 document.getElementById("loader").style.display="none";
 };
-
-setTimeout(function(){
-document.getElementById("loader").style.display="none";
-},2000);
+setTimeout(function(){document.getElementById("loader").style.display="none";},2000);
 
 /* TYPING TEXT */
-
 const text="iCloud Unlocking • Android Repairs • Hardware & Software Solutions";
 let i=0;
-
 function typeWriter(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeWriter,40);
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
 }
-}
-
 typeWriter();
 
 /* SCROLL BUTTON */
-
 let btn=document.getElementById("topBtn");
-
 window.onscroll=function(){
-if(document.body.scrollTop>300||document.documentElement.scrollTop>300){
-btn.style.display="block";
-}else{
-btn.style.display="none";
-}
+  if(document.body.scrollTop>300||document.documentElement.scrollTop>300){btn.style.display="block";}
+  else{btn.style.display="none";}
 };
-
-function topFunction(){
-document.body.scrollTop=0;
-document.documentElement.scrollTop=0;
-}
+function topFunction(){document.body.scrollTop=0; document.documentElement.scrollTop=0;}
 
 /* AUTO COPYRIGHT YEAR */
-
 document.getElementById("year").textContent=new Date().getFullYear();
-
 </script>
 
 </body>
