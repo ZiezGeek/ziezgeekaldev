@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en">
-<head>
+<head><button id="modeToggle" style="position:absolute;top:20px;right:20px;padding:10px;border:none;border-radius:10px;cursor:pointer;">🌙</button>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZiezGeek Aldevinc | Trusted Tech Since 2018</title>
@@ -83,7 +83,10 @@
     /* Gallery Images */
     .card img { width: 100%; border-radius: 15px; }
   </style></head>
-<body><header data-aos="fade-down">
+<body><div id="loader">
+  <div class="spinner"></div>
+  <p>Loading ZiezGeek Aldevinc...</p>
+</div><header data-aos="fade-down">
   <video autoplay muted loop>
     <source src="header-video.mp4" type="video/mp4">
   </video>
@@ -212,7 +215,35 @@ ZiezGeek Aldevinc does not support or encourage illegal activities.
   <p style="font-size:0.8rem;margin-top:15px;opacity:0.8;">
     Website Designed & Developed by <strong>ZiezGeek Aldevinc</strong>
   </p>
+<section data-aos="fade-up">
 
+<h2 style="text-align:center;margin-bottom:30px;">💰 Repair Prices</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Screen Repair</h3>
+<p>From R150</p>
+</div>
+
+<div class="card">
+<h3>iPhone Unlock</h3>
+<p>From R200</p>
+</div>
+
+<div class="card">
+<h3>Software Flash</h3>
+<p>From R120</p>
+</div>
+
+<div class="card">
+<h3>Battery Replacement</h3>
+<p>From R180</p>
+</div>
+
+</div>
+
+</section>
 </footer><!-- Floating Buttons --><a class="floating-btn" href="https://wa.me/27719549523?text=Hello%20ZiezGeek%20Aldevinc%2C%20I%20would%20like%20to%20book%20a%20service." target="_blank"><i class="fab fa-whatsapp"></i> Chat</a> <a class="floating-btn" href="tel:0719549523" style="bottom:80px;"><i class="fas fa-phone"></i> Call</a> <a class="floating-btn" href="mailto:ziezgeek@gmail.com" style="bottom:140px;"><i class="fas fa-envelope"></i> Email</a>
 
 <!-- Scripts --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script><script>
@@ -240,6 +271,24 @@ ZiezGeek Aldevinc does not support or encourage illegal activities.
     };
     updateCounter();
   });
+  <script>
+
+let mybutton=document.getElementById("topBtn");
+
+window.onscroll=function(){
+if(document.body.scrollTop>300 || document.documentElement.scrollTop>300){
+mybutton.style.display="block";
+}else{
+mybutton.style.display="none";
+}
+}
+
+function topFunction(){
+document.body.scrollTop=0;
+document.documentElement.scrollTop=0;
+}
+
+</script>
 </script><script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script></body>
@@ -247,13 +296,21 @@ ZiezGeek Aldevinc does not support or encourage illegal activities.
 </section>
 
 
+<script>
+const toggle = document.getElementById("modeToggle");
+
+toggle.onclick = () =>{
+document.body.classList.toggle("lightmode");
+}
+
+</script>
 
 
 
 
-
-
-<a class="whatsapp-btn" href="https://wa.me/27719549523" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
+<a class="floating-btn" href="https://wa.me/27719549523?text=Hello%20ZiezGeek%20I%20need%20help%20with%20my%20phone" target="_blank">
+<i class="fab fa-whatsapp"></i> Chat With Us
+</a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({ duration: 1000, once: true });</script>
