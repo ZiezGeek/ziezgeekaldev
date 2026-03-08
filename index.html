@@ -144,7 +144,14 @@
 </section><!-- Footer --><footer>
   <p>📍 Mpumalanga | Evander</p>
   <p>📞 071 954 9523 | 📧 ziezgeek@gmail.com</p>
-  <p>© 2018 – ZiezGeek Aldevinc</p>
+
+  <p>
+    © <span id="year"></span> ZiezGeek Aldevinc. All Rights Reserved.
+  </p>
+
+  <p style="font-size:0.8rem; opacity:0.8;">
+    Website designed & developed by ZiezGeek Aldevinc
+  </p>
 </footer><!-- Floating Buttons --><a class="floating-btn" href="https://wa.me/27719549523?text=Hello%20ZiezGeek%20Aldevinc%2C%20I%20would%20like%20to%20book%20a%20service." target="_blank"><i class="fab fa-whatsapp"></i> Chat</a> <a class="floating-btn" href="tel:0719549523" style="bottom:80px;"><i class="fas fa-phone"></i> Call</a> <a class="floating-btn" href="mailto:ziezgeek@gmail.com" style="bottom:140px;"><i class="fas fa-envelope"></i> Email</a>
 
 <!-- Scripts --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script><script>
@@ -172,6 +179,8 @@
     };
     updateCounter();
   });
+</script><script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script></body>
 </html>  </form>
 </section>
