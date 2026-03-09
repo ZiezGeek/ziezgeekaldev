@@ -14,7 +14,7 @@ body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg
 .navbar .logo img{height:50px;}
 .nav-links{list-style:none;display:flex;gap:25px;}
 .nav-links li{list-style:none;}
-.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;}
+.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;cursor:pointer;}
 .nav-links a:hover{color:#25D366;}
 header{text-align:center;padding:160px 20px 100px;}
 header h1{font-size:48px;text-shadow:0 0 20px #25D366;}
@@ -36,24 +36,8 @@ section{padding:70px 20px;max-width:1200px;margin:auto;}
 footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top:50px;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;color:black;}
 .review-card{background:rgba(255,255,255,0.08);border-radius:15px;padding:20px;margin-bottom:15px;}
+.hidden{display:none;}
 </style>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Person",
- "name":"Nkosinathi Nhlanhla Sishuba Dlamini",
- "birthDate":"2002-07-07",
- "birthPlace":"Vosloorus, South Africa",
- "jobTitle":"Technician and Founder of ZiezGeek Aldevinc",
- "worksFor":{
-   "@type":"Organization",
-   "name":"ZiezGeek Aldevinc"
- },
- "url":"https://www.ziezgeekaldev.store"
-}
-</script>
 </head>
 <body>
 
@@ -61,19 +45,15 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <nav class="navbar">
   <div class="logo"><img src="logo.png" alt="ZiezGeek Logo"></div>
   <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="blog.html">Tech Tips</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#prices">Prices</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#founder">Founder</a></li>
-    <li><a href="#payment">Pay</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a onclick="showSection('products')">Our Products</a></li>
+    <li><a onclick="showSection('cart')">Cart</a></li>
+    <li><a onclick="showSection('founder')">Founder</a></li>
+    <li><a onclick="showSection('reviews')">Reviews</a></li>
+    <li><a onclick="showSection('payment')">Pay</a></li>
   </ul>
 </nav>
 
-<!-- HEADER -->
+<!-- HEADER (always visible) -->
 <header>
   <img src="logo.png" alt="ZiezGeek Logo" class="logo-img">
   <h1>ZiezGeek Aldevinc 🚀</h1>
@@ -83,10 +63,9 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </header>
 
 <!-- PRODUCTS -->
-<section id="products">
+<section id="products" class="hidden">
 <h2 style="text-align:center;margin-bottom:30px;">Our Products</h2>
 <div class="products">
-
 <div class="product-card">
 <img src="screen-protector.jpg" alt="Screen Protector">
 <h3>Screen Protectors</h3>
@@ -97,7 +76,6 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </select>
 <button class="buy-btn" onclick="addToCart('Screen Protector', document.getElementById('screenQty').value)">Add to Cart</button>
 </div>
-
 <div class="product-card">
 <img src="phone-pouch.jpg" alt="Phone Pouch">
 <h3>Phone Pouches</h3>
@@ -108,7 +86,6 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </select>
 <button class="buy-btn" onclick="addToCart('Phone Pouches', document.getElementById('pouchQty').value)">Add to Cart</button>
 </div>
-
 <div class="product-card">
 <img src="charger.jpg" alt="Charger">
 <h3>Chargers</h3>
@@ -119,23 +96,11 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </select>
 <button class="buy-btn" onclick="addToCart('Chargers', document.getElementById('chargerQty').value)">Add to Cart</button>
 </div>
-
-<div class="product-card">
-<img src="other-electronics.jpg" alt="Other Electronics">
-<h3>Other Electronics</h3>
-<p>Cables, earphones, and accessories.</p>
-<select id="otherQty">
-<option value="80">R80 - 1 item</option>
-<option value="150">R150 - 2 items</option>
-</select>
-<button class="buy-btn" onclick="addToCart('Other Electronics', document.getElementById('otherQty').value)">Add to Cart</button>
-</div>
-
 </div>
 </section>
 
 <!-- CART -->
-<section id="cart" style="padding:70px 20px; max-width:1200px; margin:auto;">
+<section id="cart" class="hidden" style="padding:70px 20px; max-width:1200px; margin:auto;">
 <h2 style="text-align:center;margin-bottom:30px;">Your Cart 🛒</h2>
 <div id="cartItems" style="display:grid; gap:15px; margin-bottom:20px;"></div>
 <p style="text-align:right;font-size:18px;">Total: R<span id="cartTotal">0</span></p>
@@ -143,7 +108,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </section>
 
 <!-- FOUNDER -->
-<section id="founder" class="founder">
+<section id="founder" class="founder hidden">
 <h2>About the Founder</h2>
 <p>Nkosinathi Nhlanhla Sishuba Dlamini – Founder of ZiezGeek</p>
 <button onclick="toggleAbout()">Read More</button>
@@ -153,7 +118,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews">
+<section id="reviews" class="hidden">
 <h2 style="text-align:center;margin-bottom:30px;">Client Reviews ⭐</h2>
 <div class="review-card">"Fast and reliable service!" - Thabo M</div>
 <div class="review-card">"My phone was fixed same day." - Lerato K</div>
@@ -161,7 +126,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </section>
 
 <!-- PAYMENT -->
-<section id="payment" style="text-align:center;margin-top:50px;">
+<section id="payment" class="hidden" style="text-align:center;margin-top:50px;">
 <h2>Pay for Selected Product</h2>
 <form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
 <input type="hidden" name="merchant_id" value="32218943">
@@ -177,10 +142,18 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <p>© 2026 ZiezGeek Aldevinc | Vosloorus</p>
 </footer>
 
-<!-- WhatsApp -->
 <a class="whatsapp" href="https://wa.me/0814382017">💬</a>
 
 <script>
+// Section toggle
+function showSection(sectionId){
+  const sections = ['products','cart','founder','reviews','payment'];
+  sections.forEach(id=>{
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(sectionId).classList.remove('hidden');
+}
+
 // CART
 let cart = [];
 function addToCart(name, price){
@@ -212,10 +185,10 @@ function checkoutCart(){
   document.getElementById('payItem').value=items;
   document.getElementById('payAmount').value=total;
   alert("Cart ready! Scroll down to Pay Now to complete the payment.");
-  document.getElementById('payment').scrollIntoView({behavior:'smooth'});
+  showSection('payment');
 }
 
-// FOUNDER
+// FOUNDER read more
 function toggleAbout(){
   var content=document.getElementById("aboutContent");
   content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";
@@ -223,4 +196,4 @@ function toggleAbout(){
 </script>
 
 </body>
-</html> 
+</html>
