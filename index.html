@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZiezGeek Aldevinc | Phone Repairs & Accessories</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -13,7 +14,7 @@ body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg
 .navbar .logo img{height:50px;}
 .nav-links{list-style:none;display:flex;gap:25px;}
 .nav-links li{list-style:none;}
-.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;cursor:pointer;}
+.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;}
 .nav-links a:hover{color:#25D366;}
 header{text-align:center;padding:160px 20px 100px;}
 header h1{font-size:48px;text-shadow:0 0 20px #25D366;}
@@ -31,9 +32,10 @@ section{padding:70px 20px;max-width:1200px;margin:auto;}
 .founder button{background:#25D366;color:black;padding:10px 20px;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:15px;}
 #aboutContent{display:none;margin-top:20px;line-height:1.6;transition:opacity 0.5s;}
 #aboutContent.show{display:block;opacity:1;}
-.hidden{display:none;}
+#cartItems div{display:flex;justify-content:space-between;align-items:center;}
 footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top:50px;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;color:black;}
+.review-card{background:rgba(255,255,255,0.08);border-radius:15px;padding:20px;margin-bottom:15px;}
 </style>
 
 <!-- Structured Data -->
@@ -45,7 +47,10 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
  "birthDate":"2002-07-07",
  "birthPlace":"Vosloorus, South Africa",
  "jobTitle":"Technician and Founder of ZiezGeek Aldevinc",
- "worksFor":{"@type":"Organization","name":"ZiezGeek Aldevinc"},
+ "worksFor":{
+   "@type":"Organization",
+   "name":"ZiezGeek Aldevinc"
+ },
  "url":"https://www.ziezgeekaldev.store"
 }
 </script>
@@ -56,12 +61,15 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <nav class="navbar">
   <div class="logo"><img src="logo.png" alt="ZiezGeek Logo"></div>
   <ul class="nav-links">
-    <li><a onclick="showSection('blog')">Tech Tips</a></li>
-    <li><a onclick="showSection('products')">Our Products</a></li>
-    <li><a onclick="showSection('cart')">Cart</a></li>
-    <li><a onclick="showSection('founder')">Founder</a></li>
-    <li><a onclick="showSection('reviews')">Reviews</a></li>
-    <li><a onclick="showSection('payment')">Pay</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="blog.html">Tech Tips</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#prices">Prices</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#payment">Pay</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -74,14 +82,8 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
   <a class="glow-btn" href="https://wa.me/0719549523">Book Repair</a>
 </header>
 
-<!-- TECH TIPS -->
-<section id="blog" class="hidden">
-<h2 style="text-align:center;margin-bottom:30px;">Tech Tips 🖥️</h2>
-<p>Tips, tutorials, and guides for devices and unlocking.</p>
-</section>
-
 <!-- PRODUCTS -->
-<section id="products" class="hidden">
+<section id="products">
 <h2 style="text-align:center;margin-bottom:30px;">Our Products</h2>
 <div class="products">
 
@@ -93,7 +95,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="80">R80 - 1 piece</option>
 <option value="150">R150 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Screen Protector', parseFloat(document.getElementById('screenQty').value))">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Screen Protector', document.getElementById('screenQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
@@ -104,7 +106,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="100">R100 - 1 piece</option>
 <option value="180">R180 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Phone Pouch', parseFloat(document.getElementById('pouchQty').value))">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Phone Pouches', document.getElementById('pouchQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
@@ -115,7 +117,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="200">R200 - 1 piece</option>
 <option value="350">R350 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Charger', parseFloat(document.getElementById('chargerQty').value))">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Chargers', document.getElementById('chargerQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
@@ -126,22 +128,22 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="80">R80 - 1 item</option>
 <option value="150">R150 - 2 items</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Other Electronics', parseFloat(document.getElementById('otherQty').value))">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Other Electronics', document.getElementById('otherQty').value)">Add to Cart</button>
 </div>
 
 </div>
 </section>
 
 <!-- CART -->
-<section id="cart" class="hidden">
+<section id="cart" style="padding:70px 20px; max-width:1200px; margin:auto;">
 <h2 style="text-align:center;margin-bottom:30px;">Your Cart 🛒</h2>
-<div id="cartItems" style="display:grid;gap:15px;margin-bottom:20px;"></div>
+<div id="cartItems" style="display:grid; gap:15px; margin-bottom:20px;"></div>
 <p style="text-align:right;font-size:18px;">Total: R<span id="cartTotal">0</span></p>
 <button class="pay-btn" onclick="checkoutCart()">Proceed to Pay</button>
 </section>
 
 <!-- FOUNDER -->
-<section id="founder" class="founder hidden">
+<section id="founder" class="founder">
 <h2>About the Founder</h2>
 <p>Nkosinathi Nhlanhla Sishuba Dlamini – Founder of ZiezGeek</p>
 <button onclick="toggleAbout()">Read More</button>
@@ -151,15 +153,15 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="hidden">
+<section id="reviews">
 <h2 style="text-align:center;margin-bottom:30px;">Client Reviews ⭐</h2>
-<div class="product-card">"Fast and reliable service!"<br><strong>- Thabo M</strong></div>
-<div class="product-card">"My phone was fixed same day."<br><strong>- Lerato K</strong></div>
-<div class="product-card">"Best unlocking service."<br><strong>- Sibusiso N</strong></div>
+<div class="review-card">"Fast and reliable service!" - Thabo M</div>
+<div class="review-card">"My phone was fixed same day." - Lerato K</div>
+<div class="review-card">"Best unlocking service." - Sibusiso N</div>
 </section>
 
 <!-- PAYMENT -->
-<section id="payment" class="hidden" style="text-align:center;margin-top:50px;">
+<section id="payment" style="text-align:center;margin-top:50px;">
 <h2>Pay for Selected Product</h2>
 <form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
 <input type="hidden" name="merchant_id" value="32218943">
@@ -179,30 +181,12 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <a class="whatsapp" href="https://wa.me/0814382017">💬</a>
 
 <script>
-// Toggle hidden sections
-function showSection(sectionId){
-  const sections = ['blog','products','cart','founder','reviews','payment'];
-  sections.forEach(id=>document.getElementById(id).classList.add('hidden'));
-  document.getElementById(sectionId).classList.remove('hidden');
-}
-
-// Founder read more toggle
-function toggleAbout(){
-  const content=document.getElementById("aboutContent");
-  content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";
-}
-
-// Cart array
+// CART
 let cart = [];
-
-// Add to cart
 function addToCart(name, price){
   cart.push({name:name, price:parseFloat(price)});
   updateCartUI();
-  alert(name + " added to cart!");
 }
-
-// Update cart UI
 function updateCartUI(){
   const cartDiv=document.getElementById('cartItems');
   cartDiv.innerHTML='';
@@ -210,32 +194,33 @@ function updateCartUI(){
   cart.forEach((item,index)=>{
     total+=item.price;
     cartDiv.innerHTML+=`
-      <div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
-        <span>${item.name} - R${item.price}</span>
-        <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
-      </div>
-    `;
+    <div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;">
+      <span>${item.name} - R${item.price}</span>
+      <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
+    </div>`;
   });
   document.getElementById('cartTotal').innerText=total.toFixed(2);
 }
-
-// Remove from cart
 function removeFromCart(index){
   cart.splice(index,1);
   updateCartUI();
 }
-
-// Checkout cart
 function checkoutCart(){
-  if(cart.length===0){ alert("Your cart is empty!"); return; }
-  const items = cart.map(item=>item.name).join(", ");
-  const total = cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
-  document.getElementById('payItem').value = items;
-  document.getElementById('payAmount').value = total;
+  if(cart.length===0){alert("Your cart is empty!"); return;}
+  const items=cart.map(item=>item.name).join(", ");
+  const total=cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
+  document.getElementById('payItem').value=items;
+  document.getElementById('payAmount').value=total;
   alert("Cart ready! Scroll down to Pay Now to complete the payment.");
   document.getElementById('payment').scrollIntoView({behavior:'smooth'});
+}
+
+// FOUNDER
+function toggleAbout(){
+  var content=document.getElementById("aboutContent");
+  content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";
 }
 </script>
 
 </body>
-</html> 
+</html>
