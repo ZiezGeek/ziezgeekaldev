@@ -27,14 +27,33 @@ section{padding:70px 20px;max-width:1200px;margin:auto;}
 .product-card h3{color:#00ff9d;}
 .product-card p{margin:10px 0;}
 .product-card select{margin-top:10px;padding:8px;border-radius:5px;border:none;font-weight:500;}
-.founder{background:rgba(255,255,255,0.08);border-radius:20px;padding:40px;margin-top:50px;text-align:left;line-height:1.6;}
+.founder{background:rgba(255,255,255,0.08);border-radius:20px;padding:40px;margin-top:50px;line-height:1.6;}
 .founder h2{color:#25D366;margin-bottom:15px;}
 .founder button{background:#25D366;color:black;padding:10px 20px;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:15px;}
 #aboutContent{display:none;margin-top:20px;line-height:1.6;transition:opacity 0.5s;}
 #aboutContent.show{display:block;opacity:1;}
+#cartItems div{display:flex;justify-content:space-between;align-items:center;}
 footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top:50px;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;color:black;}
+.review-card{background:rgba(255,255,255,0.08);border-radius:15px;padding:20px;margin-bottom:15px;}
 </style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Person",
+ "name":"Nkosinathi Nhlanhla Sishuba Dlamini",
+ "birthDate":"2002-07-07",
+ "birthPlace":"Vosloorus, South Africa",
+ "jobTitle":"Technician and Founder of ZiezGeek Aldevinc",
+ "worksFor":{
+   "@type":"Organization",
+   "name":"ZiezGeek Aldevinc"
+ },
+ "url":"https://www.ziezgeekaldev.store"
+}
+</script>
 </head>
 <body>
 
@@ -49,8 +68,8 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
     <li><a href="#prices">Prices</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#founder">Founder</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#payment">Pay</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -73,10 +92,10 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <h3>Screen Protectors</h3>
 <p>Tempered glass to protect your screen.</p>
 <select id="screenQty">
-<option value="150">R80 - 1 piece</option>
-<option value="280">R120 - 2 pieces</option>
+<option value="80">R80 - 1 piece</option>
+<option value="150">R150 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Screen Protector', 150)">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Screen Protector', document.getElementById('screenQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
@@ -87,7 +106,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="100">R100 - 1 piece</option>
 <option value="180">R180 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Phone Pouches', 150)">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Phone Pouches', document.getElementById('pouchQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
@@ -98,78 +117,29 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <option value="200">R200 - 1 piece</option>
 <option value="350">R350 - 2 pieces</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Chargers', 150)">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Chargers', document.getElementById('chargerQty').value)">Add to Cart</button>
 </div>
 
 <div class="product-card">
 <img src="other-electronics.jpg" alt="Other Electronics">
-<h3>Other Electronics<!-- SHOPPING CART -->
-<section id="cart" style="padding:70px 20px; max-width:1200px; margin:auto;">
-  <h2 style="text-align:center;margin-bottom:30px;">Your Cart 🛒</h2>
-  <div id="cartItems" style="display:grid; gap:15px; margin-bottom:20px;"></div>
-  <p style="text-align:right;font-size:18px;">Total: R<span id="cartTotal">0</span></p>
-  <button class="pay-btn" onclick="checkoutCart()">Proceed to Pay</button>
-</section>
-
-<script>
-// Cart array
-let cart = [];
-
-// Function to add products to cart
-function addToCart(name, price){
-  cart.push({name:name, price:parseFloat(price)});
-  updateCartUI();
-}
-
-// Update cart display
-function updateCartUI(){
-  const cartDiv = document.getElementById('cartItems');
-  cartDiv.innerHTML = '';
-  let total = 0;
-  cart.forEach((item, index) => {
-    total += item.price;
-    cartDiv.innerHTML += `
-      <div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
-        <span>${item.name} - R${item.price}</span>
-        <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
-      </div>
-    `;
-  });
-  document.getElementById('cartTotal').innerText = total.toFixed(2);
-}
-
-// Remove item from cart
-function removeFromCart(index){
-  cart.splice(index,1);
-  updateCartUI();
-}
-
-// Checkout cart
-function checkoutCart(){
-  if(cart.length === 0){
-    alert("Your cart is empty!");
-    return;
-  }
-  // Combine items for PayFast
-  const items = cart.map(item=>item.name).join(", ");
-  const total = cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
-  
-  document.getElementById('payItem').value = items;
-  document.getElementById('payAmount').value = total;
-  
-  alert("Cart ready! Scroll down to Pay Now to complete the payment.");
-  document.getElementById('payment').scrollIntoView({behavior:'smooth'});
-}
-</script></h3>
+<h3>Other Electronics</h3>
 <p>Cables, earphones, and accessories.</p>
 <select id="otherQty">
 <option value="80">R80 - 1 item</option>
 <option value="150">R150 - 2 items</option>
 </select>
-<button class="buy-btn" onclick="addToCart('Other Electronics', 150)">Add to Cart</button>
+<button class="buy-btn" onclick="addToCart('Other Electronics', document.getElementById('otherQty').value)">Add to Cart</button>
 </div>
 
 </div>
+</section>
+
+<!-- CART -->
+<section id="cart" style="padding:70px 20px; max-width:1200px; margin:auto;">
+<h2 style="text-align:center;margin-bottom:30px;">Your Cart 🛒</h2>
+<div id="cartItems" style="display:grid; gap:15px; margin-bottom:20px;"></div>
+<p style="text-align:right;font-size:18px;">Total: R<span id="cartTotal">0</span></p>
+<button class="pay-btn" onclick="checkoutCart()">Proceed to Pay</button>
 </section>
 
 <!-- FOUNDER -->
@@ -182,28 +152,25 @@ function checkoutCart(){
 </div>
 </section>
 
-<!-- PAYMENT -->
-<section id="payment" style="text-align:center;margin-top:50px;">
-  <h2>Pay for Selected Product</h2>
-  <form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
-    <input type="hidden" name="merchant_id" value="32218943">
-    <input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
-    <input type="hidden" name="amount" id="payAmount" value="">
-    <input type="hidden" name="item_name" id="payItem" value="">
-    <button type="submit" class="pay-btn">Pay Now</button>
-  </form>
+<!-- REVIEWS -->
+<section id="reviews">
+<h2 style="text-align:center;margin-bottom:30px;">Client Reviews ⭐</h2>
+<div class="review-card">"Fast and reliable service!" - Thabo M</div>
+<div class="review-card">"My phone was fixed same day." - Lerato K</div>
+<div class="review-card">"Best unlocking service." - Sibusiso N</div>
 </section>
 
-<script>
-// Function to fill PayFast form dynamically
-function buyProduct(name, amount){
-  document.getElementById('payItem').value = name;
-  document.getElementById('payAmount').value = amount;
-  // Scroll to payment section
-  document.getElementById('payment').scrollIntoView({behavior:'smooth'});
-  alert(name + " added to checkout! Click Pay Now below.");
-}
-</script>
+<!-- PAYMENT -->
+<section id="payment" style="text-align:center;margin-top:50px;">
+<h2>Pay for Selected Product</h2>
+<form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
+<input type="hidden" name="merchant_id" value="32218943">
+<input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
+<input type="hidden" name="amount" id="payAmount" value="">
+<input type="hidden" name="item_name" id="payItem" value="">
+<button type="submit" class="pay-btn">Pay Now</button>
+</form>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -214,20 +181,46 @@ function buyProduct(name, amount){
 <a class="whatsapp" href="https://wa.me/0814382017">💬</a>
 
 <script>
-// Founder read more toggle
+// CART
+let cart = [];
+function addToCart(name, price){
+  cart.push({name:name, price:parseFloat(price)});
+  updateCartUI();
+}
+function updateCartUI(){
+  const cartDiv=document.getElementById('cartItems');
+  cartDiv.innerHTML='';
+  let total=0;
+  cart.forEach((item,index)=>{
+    total+=item.price;
+    cartDiv.innerHTML+=`
+    <div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;">
+      <span>${item.name} - R${item.price}</span>
+      <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
+    </div>`;
+  });
+  document.getElementById('cartTotal').innerText=total.toFixed(2);
+}
+function removeFromCart(index){
+  cart.splice(index,1);
+  updateCartUI();
+}
+function checkoutCart(){
+  if(cart.length===0){alert("Your cart is empty!"); return;}
+  const items=cart.map(item=>item.name).join(", ");
+  const total=cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
+  document.getElementById('payItem').value=items;
+  document.getElementById('payAmount').value=total;
+  alert("Cart ready! Scroll down to Pay Now to complete the payment.");
+  document.getElementById('payment').scrollIntoView({behavior:'smooth'});
+}
+
+// FOUNDER
 function toggleAbout(){
   var content=document.getElementById("aboutContent");
   content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";
 }
-
-// Buy product function
-function buyProduct(name, amount){
-  document.getElementById('payItem').value = name;
-  document.getElementById('payAmount').value = amount;
-  document.getElementById('payForm').scrollIntoView({behavior:'smooth'});
-  alert(name+" added to checkout. Click Pay Now below!");
-}
 </script>
 
 </body>
-</html>
+</html> 
