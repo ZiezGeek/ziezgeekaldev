@@ -5,13 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ZiezGeek Aldevinc | Tech Repairs & Accessories</title>
+<title>ZiezGeek Aldevinc | Phone Repairs & Accessories Vosloorus</title>
 
 <style>
 
 body{
-font-family:Arial, sans-serif;
 margin:0;
+font-family:Arial, sans-serif;
 background:#0f172a;
 color:white;
 }
@@ -22,12 +22,20 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 40px;
+padding:15px 30px;
 background:#020617;
+position:sticky;
+top:0;
 }
 
-nav h1{
-color:#00ff9d;
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:40px;
 }
 
 nav a{
@@ -40,7 +48,8 @@ margin-left:20px;
 
 .hero{
 text-align:center;
-padding:80px 20px;
+padding:120px 20px;
+background:linear-gradient(#020617,#0f172a);
 }
 
 .hero h2{
@@ -49,27 +58,34 @@ font-size:40px;
 
 .hero p{
 font-size:18px;
+color:#94a3b8;
 }
 
 /* SECTION */
 
 section{
-padding:60px 20px;
-max-width:1000px;
+max-width:1100px;
 margin:auto;
+padding:60px 20px;
 }
 
 /* PRODUCTS */
 
 .products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.product-card{
+background:#020617;
+padding:20px;
+border-radius:10px;
 text-align:center;
 }
 
-/* FOUNDER */
-
-#aboutContent{
-display:none;
-margin-top:20px;
+.product-card h3{
+color:#00ff9d;
 }
 
 /* BUTTON */
@@ -81,6 +97,15 @@ padding:12px 25px;
 border-radius:8px;
 font-weight:bold;
 cursor:pointer;
+margin-top:10px;
+}
+
+/* FOUNDER */
+
+#aboutContent{
+display:none;
+margin-top:20px;
+line-height:1.6;
 }
 
 /* PAYMENT */
@@ -91,16 +116,27 @@ background:#020617;
 border-radius:10px;
 }
 
-.pay-btn{
-margin-top:20px;
-padding:15px 30px;
-font-size:18px;
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+color:black;
 }
+
+/* FOOTER */
 
 footer{
 text-align:center;
 padding:20px;
 background:black;
+margin-top:40px;
 }
 
 </style>
@@ -113,13 +149,16 @@ background:black;
 
 <nav>
 
-<h1>ZiezGeek</h1>
+<div class="logo">
+<img src="logo.png">
+<h1 style="color:#00ff9d;">ZiezGeek</h1>
+</div>
 
 <div>
 <a href="#">Home</a>
 <a href="#products">Products</a>
 <a href="#founder">Founder</a>
-<a href="#payment">Payment</a>
+<a href="#payment">Pay</a>
 </div>
 
 </nav>
@@ -131,22 +170,40 @@ background:black;
 
 <h2>Welcome to ZiezGeek Aldevinc</h2>
 
-<p>Phone Repairs • Accessories • Tech Support</p>
+<p>Phone Repairs • Accessories • Tech Support in Vosloorus</p>
 
 </section>
 
 
 <!-- PRODUCTS -->
 
-<section id="products" class="products">
+<section id="products">
 
-<h2>Our Products</h2>
+<h2 style="text-align:center;">Our Products</h2>
 
-<p>
-At ZiezGeek Aldevinc, we sell quality mobile accessories including screen protectors,
-phone pouches, chargers, cables and other useful electronic accessories.
-We also provide phone repair, device unlocking and technical support.
-</p>
+<div class="products">
+
+<div class="product-card">
+<h3>Screen Protectors</h3>
+<p>Strong tempered glass to protect your phone screen.</p>
+</div>
+
+<div class="product-card">
+<h3>Phone Pouches</h3>
+<p>Stylish and durable pouches to protect devices.</p>
+</div>
+
+<div class="product-card">
+<h3>Chargers</h3>
+<p>Fast charging cables and adapters.</p>
+</div>
+
+<div class="product-card">
+<h3>Tech Accessories</h3>
+<p>Earphones, cables and other electronics.</p>
+</div>
+
+</div>
 
 </section>
 
@@ -164,17 +221,15 @@ We also provide phone repair, device unlocking and technical support.
 <div id="aboutContent">
 
 <p>
-Born on 7 July 2002 in Vosloorus, Gauteng, South Africa.
+Born on 7 July 2002 in Vosloorus, Gauteng South Africa.
 </p>
 
 <p>
-He attended Zonkizizwe Primary School and later Rebontsheng Primary School.
-He completed his matric at Erasmus Monareng Secondary School.
+He attended Zonkizizwe Primary School and later Rebontsheng Primary School before completing matric at Erasmus Monareng Secondary School.
 </p>
 
 <p>
-His passion for technology started in Grade 9 where he began fixing and unlocking devices.
-Today he runs ZiezGeek Aldevinc providing device repairs and tech services.
+His passion for technology started in Grade 9 where he began fixing and unlocking devices. Today he runs ZiezGeek Aldevinc providing repairs, accessories and tech services.
 </p>
 
 </div>
@@ -192,14 +247,13 @@ Today he runs ZiezGeek Aldevinc providing device repairs and tech services.
 
 <form action="https://www.payfast.co.za/eng/process" method="post">
 
-<input type="hidden" name="merchant_id" value="YOUR_MERCHANT_ID">
-<input type="hidden" name="merchant_key" value="YOUR_MERCHANT_KEY">
+<input type="hidden" name="merchant_id" value="32218943">
+<input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
 
 <input type="hidden" name="amount" value="150.00">
-
 <input type="hidden" name="item_name" value="ZiezGeek Service">
 
-<button type="submit" class="pay-btn">
+<button type="submit">
 
 Pay Securely
 
@@ -210,11 +264,18 @@ Pay Securely
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
 <p>© 2026 ZiezGeek Aldevinc | Vosloorus</p>
 
 </footer>
+
+
+<!-- WHATSAPP BUTTON -->
+
+<a class="whatsapp" href="https://wa.me/0719549523">💬</a>
 
 
 <script>
