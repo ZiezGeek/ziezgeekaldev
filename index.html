@@ -3,98 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZiezGeek Aldevinc | Trusted Tech Since 2018</title>
+<title>ZiezGeek Aldevinc | Phone Repairs & Accessories</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-*{margin:0; padding:0; box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:white; scroll-behavior:smooth;}
-
-/* NAVBAR */
-.navbar{position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:15px 40px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px); z-index:1000;}
+body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;scroll-behavior:smooth;}
+.navbar{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 40px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:1000;}
 .navbar .logo img{height:50px;}
-.nav-links{list-style:none; display:flex; gap:25px;}
+.nav-links{list-style:none;display:flex;gap:25px;}
 .nav-links li{list-style:none;}
-.nav-links a{text-decoration:none; color:white; font-weight:500; font-size:16px; transition:.3s;}
+.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;}
 .nav-links a:hover{color:#25D366;}
-
-/* HEADER */
-header{text-align:center; padding:160px 20px 100px;}
-header h1{font-size:48px; text-shadow:0 0 20px #25D366;}
-header .logo-img{width:160px; margin-bottom:20px;}
-
-/* BUTTON */
-.glow-btn{background:#25D366; color:black; padding:14px 28px; border-radius:30px; font-weight:700; text-decoration:none; display:inline-block; margin-top:20px; box-shadow:0 0 10px #25D366; cursor:pointer;}
-
-/* SECTIONS */
-section{padding:70px 20px; max-width:1200px; margin:auto;}
-.services{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;}
-
-/* CARDS */
-.card{background:rgba(255,255,255,0.08); border-radius:20px; padding:30px; text-align:center; transition:.4s;}
-.card:hover{transform:scale(1.05); box-shadow:0 25px 50px rgba(0,0,0,0.5);}
-.card i{font-size:35px; margin-bottom:15px; color:#25D366;}
-
-/* LOADER */
-#loader{position:fixed; top:0; left:0; width:100%; height:100%; background:#0f2027; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; transition:opacity 0.5s;}
-.spinner{border:6px solid #333; border-top:6px solid #25D366; border-radius:50%; width:60px; height:60px; animation:spin 1s linear infinite;}
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-
-/* SCROLL BUTTON */
-#topBtn{position:fixed; bottom:20px; left:20px; padding:12px 16px; border:none; border-radius:50%; background:#25D366; cursor:pointer; display:none;}
-
-/* FOOTER */
-footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-top:50px;}
-
-/* FOUNDER SECTION */
-.founder{background:rgba(255,255,255,0.08); border-radius:20px; padding:40px; margin-top:50px; text-align:left; line-height:1.6;}
-.founder h2{color:#25D366; margin-bottom:15px;}
-.founder button{background:#25D366; color:black; padding:10px 20px; border:none; border-radius:10px; font-weight:600; cursor:pointer; margin-top:15px;}
-#aboutContent{display:none; margin-top:20px; line-height:1.6; transition:opacity 0.5s;}
-#aboutContent.show{display:block; opacity:1;}
+header{text-align:center;padding:160px 20px 100px;}
+header h1{font-size:48px;text-shadow:0 0 20px #25D366;}
+header .logo-img{width:160px;margin-bottom:20px;}
+.glow-btn, .pay-btn, .buy-btn{background:#25D366;color:black;padding:14px 28px;border-radius:30px;font-weight:700;text-decoration:none;display:inline-block;margin-top:20px;box-shadow:0 0 10px #25D366;cursor:pointer;border:none;}
+section{padding:70px 20px;max-width:1200px;margin:auto;}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.product-card{background:rgba(255,255,255,0.08);border-radius:20px;padding:20px;text-align:center;transition:.3s;}
+.product-card img{width:100%;border-radius:15px;margin-bottom:15px;}
+.product-card h3{color:#00ff9d;}
+.product-card p{margin:10px 0;}
+.product-card select{margin-top:10px;padding:8px;border-radius:5px;border:none;font-weight:500;}
+.founder{background:rgba(255,255,255,0.08);border-radius:20px;padding:40px;margin-top:50px;text-align:left;line-height:1.6;}
+.founder h2{color:#25D366;margin-bottom:15px;}
+.founder button{background:#25D366;color:black;padding:10px 20px;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:15px;}
+#aboutContent{display:none;margin-top:20px;line-height:1.6;transition:opacity 0.5s;}
+#aboutContent.show{display:block;opacity:1;}
+footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top:50px;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;color:black;}
 </style>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Person",
- "name":"Nkosinathi Nhlanhla Sishuba Dlamini",
- "birthDate":"2002-07-07",
- "birthPlace":"Vosloorus, South Africa",
- "jobTitle":"Technician and Founder of ZiezGeek Aldevinc",
- "worksFor":{
-   "@type":"Organization",
-   "name":"ZiezGeek Aldevinc"
- },
- "url":"https://www.ziezgeekaldev.store"
-}
-</script>
 </head>
-
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-  <p>Loading ZiezGeek...</p>
-</div>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">
-    <img src="logo.png" alt="ZiezGeek Logo">
-  </div>
-
+  <div class="logo"><img src="logo.png" alt="ZiezGeek Logo"></div>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="blog.html">Tech Tips</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#prices">Prices</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#payment">Pay</a></li>
   </ul>
 </nav>
 
@@ -104,122 +55,106 @@ footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-
   <h1>ZiezGeek Aldevinc 🚀</h1>
   <p>🔐 iCloud & Android Unlocking • 📱 iOS & Android Repairs</p>
   <p>🛠️ Hardware • Software • Solutions</p>
-  <a class="glow-btn" href="https://wa.me/27719549523">Book Repair</a>
+  <a class="glow-btn" href="https://wa.me/YOUR_PHONE">Book Repair</a>
 </header>
 
-<!-- SERVICES SECTION -->
-<section id="services">
-  <h2 style="text-align:center; margin-bottom:30px;">Our Services</h2>
-  <div class="services">
-    <div class="card"><i class="fas fa-lock"></i><h3>Device Unlocking</h3><p>Safe and professional iCloud & Android unlocking.</p></div>
-    <div class="card"><i class="fas fa-mobile"></i><h3>Phone Repairs</h3><p>Screen, battery and system repairs.</p></div>
-    <div class="card"><i class="fas fa-microchip"></i><h3>Software Fixes</h3><p>Flashing, firmware and OS solutions.</p></div>
-    <div class="card"><i class="fas fa-tools"></i><h3>Hardware Repairs</h3><p>Professional diagnostics & fixes.</p></div>
-  </div>
+<!-- PRODUCTS -->
+<section id="products">
+<h2 style="text-align:center;margin-bottom:30px;">Our Products</h2>
+<div class="products">
+
+<div class="product-card">
+<img src="screen-protector.jpg" alt="Screen Protector">
+<h3>Screen Protectors</h3>
+<p>Tempered glass to protect your screen.</p>
+<select id="screenQty">
+<option value="150">R150 - 1 piece</option>
+<option value="280">R280 - 2 pieces</option>
+</select>
+<button class="buy-btn" onclick="buyProduct('Screen Protectors', document.getElementById('screenQty').value)">Buy Now</button>
+</div>
+
+<div class="product-card">
+<img src="phone-pouch.jpg" alt="Phone Pouch">
+<h3>Phone Pouches</h3>
+<p>Stylish and durable phone pouches.</p>
+<select id="pouchQty">
+<option value="100">R100 - 1 piece</option>
+<option value="180">R180 - 2 pieces</option>
+</select>
+<button class="buy-btn" onclick="buyProduct('Phone Pouches', document.getElementById('pouchQty').value)">Buy Now</button>
+</div>
+
+<div class="product-card">
+<img src="charger.jpg" alt="Charger">
+<h3>Chargers</h3>
+<p>Fast charging cables and adapters.</p>
+<select id="chargerQty">
+<option value="200">R200 - 1 piece</option>
+<option value="350">R350 - 2 pieces</option>
+</select>
+<button class="buy-btn" onclick="buyProduct('Chargers', document.getElementById('chargerQty').value)">Buy Now</button>
+</div>
+
+<div class="product-card">
+<img src="other-electronics.jpg" alt="Other Electronics">
+<h3>Other Electronics</h3>
+<p>Cables, earphones, and accessories.</p>
+<select id="otherQty">
+<option value="80">R80 - 1 item</option>
+<option value="150">R150 - 2 items</option>
+</select>
+<button class="buy-btn" onclick="buyProduct('Other Electronics', document.getElementById('otherQty').value)">Buy Now</button>
+</div>
+
+</div>
 </section>
 
-<!-- FOUNDER SECTION -->
-<section class="founder">
-  <h2>About the Founder</h2>
-  <p>Nkosinathi Nhlanhla Sishuba Dlamini, Founder of ZiezGeek Aldevinc</p>
-  
-  <button id="aboutBtn">Read More</button>
-  
-  <div id="aboutContent">
-    <p>Born on 7 July 2002 in Vosloorus, Gauteng, South Africa.</p>
-    <p>Attended Zonkizizwe Primary School before moving to Rebontsheng Primary School. Later studied at Erasmus Monareng Secondary School where he completed his matric.</p>
-    <p>While in Grade 9, he developed a strong interest in technology and began learning how to repair and unlock mobile devices.</p>
-    <p>After matric, he started building ZiezGeek Aldevinc seriously. In 2023, he began working at EPAG (Evander Petroleum and Gas) as an attendant while continuing his tech repair business part-time.</p>
-    <p>He provides professional smartphone repair, software troubleshooting, device unlocking, and technical support.</p>
-  </div>
+<!-- FOUNDER -->
+<section id="founder" class="founder">
+<h2>About the Founder</h2>
+<p>Nkosinathi Nhlanhla Sishuba Dlamini – Founder of ZiezGeek</p>
+<button onclick="toggleAbout()">Read More</button>
+<div id="aboutContent">
+<p>Born 07 July 2002, Vosloorus. Passionate about tech from Grade 9, fixing and unlocking devices. After matric, started ZiezGeek Aldevinc offering repairs and accessories.</p>
+</div>
 </section>
 
 <!-- PAYMENT -->
-
-<section id="payment" class="payment-section">
-
-<h2>Pay for Services</h2>
-
-<p>Secure payment for repairs and accessories.</p>
-
-<form action="https://www.payfast.co.za/eng/process" method="post">
-
-<input type="hidden" name="merchant_id" value="32218943">
-<input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
-
-<input type="hidden" name="amount" value="150.00">
-<input type="hidden" name="item_name" value="ZiezGeek Service">
-
-<button type="submit">
-
-Pay Securely
-
-</button>
-
+<section id="payment" style="text-align:center;margin-top:50px;">
+<h2>Pay for Selected Product</h2>
+<form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
+<input type="hidden" name="merchant_id" value="YOUR_MERCHANT_ID">
+<input type="hidden" name="merchant_key" value="YOUR_MERCHANT_KEY">
+<input type="hidden" name="amount" id="payAmount" value="">
+<input type="hidden" name="item_name" id="payItem" value="">
+<button type="submit" class="pay-btn">Pay Now</button>
 </form>
-
 </section>
-<!-- FOOTER -->
-<footer>
-  <p>📍 Mpumalanga | Evander</p>
-  <p>📞 071 954 9523 | 📧 ziezgeek@gmail.com</p>
-  <p>© 2018 – ZiezGeek Aldevinc</p>
-</footer>
-
-<!-- SCRIPTS -->
-<script>
-// Loader
-window.addEventListener('load', function(){
-  document.getElementById('loader').style.display = 'none';
-});
-
-// Collapsible About Founder
-const aboutBtn = document.getElementById('aboutBtn');
-const aboutContent = document.getElementById('aboutContent');
-
-aboutBtn.addEventListener('click', function() {
-  aboutContent.classList.toggle('show');
-  aboutBtn.textContent = aboutContent.classList.contains('show') ? 'Read Less' : 'Read More';
-});
-</script>
-
-</body>
-</html>
-
 
 <!-- FOOTER -->
-
 <footer>
-
 <p>© 2026 ZiezGeek Aldevinc | Vosloorus</p>
-
 </footer>
 
-
-<!-- WHATSAPP BUTTON -->
-
-<a class="whatsapp" href="https://wa.me/0719549523">💬</a>
-
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/YOUR_PHONE">💬</a>
 
 <script>
-
+// Founder read more toggle
 function toggleAbout(){
-
-var content=document.getElementById("aboutContent");
-
-if(content.style.display==="none" || content.style.display===""){
-
-content.style.display="block";
-
-}else{
-
-content.style.display="none";
-
+  var content=document.getElementById("aboutContent");
+  content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";
 }
 
+// Buy product function
+function buyProduct(name, amount){
+  document.getElementById('payItem').value = name;
+  document.getElementById('payAmount').value = amount;
+  document.getElementById('payForm').scrollIntoView({behavior:'smooth'});
+  alert(name+" added to checkout. Click Pay Now below!");
 }
-
 </script>
 
 </body>
-</html>
+</html> 
