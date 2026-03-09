@@ -26,7 +26,7 @@ header h1{font-size:48px; text-shadow:0 0 20px #25D366;}
 header .logo-img{width:160px; margin-bottom:20px;}
 
 /* BUTTON */
-.glow-btn{background:#25D366; color:black; padding:14px 28px; border-radius:30px; font-weight:700; text-decoration:none; display:inline-block; margin-top:20px; box-shadow:0 0 10px #25D366;}
+.glow-btn{background:#25D366; color:black; padding:14px 28px; border-radius:30px; font-weight:700; text-decoration:none; display:inline-block; margin-top:20px; box-shadow:0 0 10px #25D366; cursor:pointer;}
 
 /* SECTIONS */
 section{padding:70px 20px; max-width:1200px; margin:auto;}
@@ -51,6 +51,9 @@ footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-
 /* FOUNDER SECTION */
 .founder{background:rgba(255,255,255,0.08); border-radius:20px; padding:40px; margin-top:50px; text-align:left; line-height:1.6;}
 .founder h2{color:#25D366; margin-bottom:15px;}
+.founder button{background:#25D366; color:black; padding:10px 20px; border:none; border-radius:10px; font-weight:600; cursor:pointer; margin-top:15px;}
+#aboutContent{display:none; margin-top:20px; line-height:1.6; transition:opacity 0.5s;}
+#aboutContent.show{display:block; opacity:1;}
 </style>
 
 <!-- Structured Data -->
@@ -118,10 +121,17 @@ footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-
 <!-- FOUNDER SECTION -->
 <section class="founder">
   <h2>About the Founder</h2>
-  <p>Nkosinathi Nhlanhla Sishuba Dlamini (born 7 July 2002 in Vosloorus, Gauteng, South Africa) is a South African technician and entrepreneur and the founder of ZiezGeek Aldevinc.</p>
-  <p>He attended Zonkizizwe Primary School before continuing his primary education at Rebontsheng Primary School in Vosloorus. He later studied at Erasmus Monareng Secondary School where he completed his matric.</p>
-  <p>While in Grade 9, he developed a strong interest in technology and began learning how to repair and unlock mobile devices.</p>
-  <p>After finishing school he continued growing his repair business. In 2023, he started working at EPAG (Evander Petroleum and Gas) as an attendant while running ZiezGeek Aldevinc as a technology repair service.</p>
+  <p>Nkosinathi Nhlanhla Sishuba Dlamini, Founder of ZiezGeek Aldevinc</p>
+  
+  <button id="aboutBtn">Read More</button>
+  
+  <div id="aboutContent">
+    <p>Born on 7 July 2002 in Vosloorus, Gauteng, South Africa.</p>
+    <p>Attended Zonkizizwe Primary School before moving to Rebontsheng Primary School. Later studied at Erasmus Monareng Secondary School where he completed his matric.</p>
+    <p>While in Grade 9, he developed a strong interest in technology and began learning how to repair and unlock mobile devices.</p>
+    <p>After matric, he started building ZiezGeek Aldevinc seriously. In 2023, he began working at EPAG (Evander Petroleum and Gas) as an attendant while continuing his tech repair business part-time.</p>
+    <p>He provides professional smartphone repair, software troubleshooting, device unlocking, and technical support.</p>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -137,7 +147,16 @@ footer{background:rgba(0,0,0,0.6); text-align:center; padding:40px 20px; margin-
 window.addEventListener('load', function(){
   document.getElementById('loader').style.display = 'none';
 });
+
+// Collapsible About Founder
+const aboutBtn = document.getElementById('aboutBtn');
+const aboutContent = document.getElementById('aboutContent');
+
+aboutBtn.addEventListener('click', function() {
+  aboutContent.classList.toggle('show');
+  aboutBtn.textContent = aboutContent.classList.contains('show') ? 'Read Less' : 'Read More';
+});
 </script>
 
 </body>
-</html> 
+</html>
