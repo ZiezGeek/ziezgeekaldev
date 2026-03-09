@@ -60,7 +60,7 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
   <h1>ZiezGeek Aldevinc 🚀</h1>
   <p>🔐 iCloud & Android Unlocking • 📱 iOS & Android Repairs</p>
   <p>🛠️ Hardware • Software • Solutions</p>
-  <a class="glow-btn" href="https://wa.me/YOUR_PHONE">Book Repair</a>
+  <a class="glow-btn" href="https://wa.me/0719549523">Book Repair</a>
 </header>
 
 <!-- PRODUCTS -->
@@ -73,8 +73,8 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 <h3>Screen Protectors</h3>
 <p>Tempered glass to protect your screen.</p>
 <select id="screenQty">
-<option value="150">R150 - 1 piece</option>
-<option value="280">R280 - 2 pieces</option>
+<option value="150">R80 - 1 piece</option>
+<option value="280">R120 - 2 pieces</option>
 </select>
 <button class="buy-btn" onclick="buyProduct('Screen Protectors', document.getElementById('screenQty').value)">Buy Now</button>
 </div>
@@ -127,15 +127,26 @@ footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top
 
 <!-- PAYMENT -->
 <section id="payment" style="text-align:center;margin-top:50px;">
-<h2>Pay for Selected Product</h2>
-<form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
-<input type="hidden" name="merchant_id" value="32218943">
-<input type="hidden" name="32218943" value="rmmpojhtpdpvv">
-<input type="hidden" name="amount" id="payAmount" value="">
-<input type="hidden" name="item_name" id="payItem" value="">
-<button type="submit" class="pay-btn">Pay Now</button>
-</form>
+  <h2>Pay for Selected Product</h2>
+  <form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
+    <input type="hidden" name="merchant_id" value="32218943">
+    <input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
+    <input type="hidden" name="amount" id="payAmount" value="">
+    <input type="hidden" name="item_name" id="payItem" value="">
+    <button type="submit" class="pay-btn">Pay Now</button>
+  </form>
 </section>
+
+<script>
+// Function to fill PayFast form dynamically
+function buyProduct(name, amount){
+  document.getElementById('payItem').value = name;
+  document.getElementById('payAmount').value = amount;
+  // Scroll to payment section
+  document.getElementById('payment').scrollIntoView({behavior:'smooth'});
+  alert(name + " added to checkout! Click Pay Now below.");
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
