@@ -73,11 +73,7 @@ crossorigin="anonymous"></script>
 <li><a onclick="scrollHome()">Home</a></li>
 <li><a href="blog.html">Tech Tips</a></li>
 <li><a onclick="showSection('products')">Products</a></li>
-<li>
-<a onclick="showSection('cart')">
-🛒 Cart (<span id="cartCount">0</span>)
-</a>
-</li>
+<li><a onclick="showSection('cart')">Cart</a></li>
 <li><a onclick="showSection('reviews')">Reviews</a></li>
 <li><a onclick="showSection('founder')">Founder</a></li>
 <li><a onclick="showSection('payment')">Pay</a></li>
@@ -217,31 +213,10 @@ updateCartUI();
 }
 
 function updateCartUI(){
-
-const cartDiv = document.getElementById('cartItems');
+const cartDiv=document.getElementById('cartItems');
 cartDiv.innerHTML='';
+let total=0;
 
-let total = 0;
-
-cart.forEach((item,index)=>{
-
-total += item.price;
-
-cartDiv.innerHTML += `
-<div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;margin-bottom:10px;">
-<span>${item.name} - R${item.price}</span>
-<button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
-</div>
-`;
-
-});
-
-document.getElementById('cartTotal').innerText = total.toFixed(2);
-
-/* UPDATE CART NUMBER */
-document.getElementById("cartCount").innerText = cart.length;
-
-}
 cart.forEach((item,index)=>{
 total+=item.price;
 cartDiv.innerHTML+=`
@@ -286,4 +261,4 @@ console.log("Service Worker Registered");
 </script>
 
 </body>
-</html> 
+</html>
