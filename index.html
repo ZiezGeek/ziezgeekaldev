@@ -1,371 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2563eb">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ZiezGeek Aldevinc | Phone Repairs & Accessories</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-}
-
-.navbar{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 40px;
-background:rgba(0,0,0,0.6);
-}
-
-.nav-links{
-display:flex;
-gap:20px;
-list-style:none;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-cursor:pointer;
-}
-
-header{
-text-align:center;
-padding:150px 20px;
-}
-
-.logo-img{
-width:150px;
-}
-
-section{
-padding:60px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.product-card{
-background:rgba(255,255,255,0.08);
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-
-.product-card img{
-width:100%;
-border-radius:10px;
-}
-
-.buy-btn{
-background:#25D366;
-border:none;
-padding:10px 20px;
-border-radius:20px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.pay-btn{
-background:#25D366;
-border:none;
-padding:12px 25px;
-border-radius:20px;
-cursor:pointer;
-}
-
-.hidden{
-display:none;
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-<div class="logo">
-<img src="logo.png" height="45">
-</div>
-
-<ul class="nav-links">
-
-<li><a onclick="scrollHome()">Home</a></li>
-<li><a href="blog.html">Tech Tips</a></li>
-<li><a onclick="showSection('products')">Products</a></li>
-
-<li>
-<a onclick="showSection('cart')">
-🛒 Cart (<span id="cartCount">0</span>)
-</a>
-</li>
-
-<li><a onclick="showSection('reviews')">Reviews</a></li>
-<li><a onclick="showSection('founder')">Founder</a></li>
-<li><a onclick="showSection('payment')">Pay</a></li>
-
-</ul>
-
-</nav>
-
-
-<!-- HEADER -->
-
-<header>
-
-<img src="logo.png" class="logo-img">
-
-<h1>ZiezGeek Aldevinc 🚀</h1>
-
-<p>Phone Repairs • Unlocking • Accessories</p>
-
-</header>
-
-
-<!-- PRODUCTS -->
-
-<section id="products" class="hidden">
-
-<h2>Our Products</h2>
-
-<div class="products">
-
-
-<div class="product-card">
-
-<img src="screen-protector.jpg">
-
-<h3>Screen Protector</h3>
-
-<select id="screenQty">
-<option value="80">R80 - 1 piece</option>
-<option value="150">R150 - 2 pieces</option>
-</select>
-
-<button class="buy-btn"
-onclick="addToCart('Screen Protector',document.getElementById('screenQty').value)">
-Add to Cart
-</button>
-
-</div>
-
-
-<div class="product-card">
-
-<img src="phone-pouch.jpg">
-
-<h3>Phone Pouch</h3>
-
-<select id="pouchQty">
-<option value="100">R100</option>
-<option value="180">R180</option>
-</select>
-
-<button class="buy-btn"
-onclick="addToCart('Phone Pouch',document.getElementById('pouchQty').value)">
-Add to Cart
-</button>
-
-</div>
-
-
-<div class="product-card">
-
-<img src="charger.jpg">
-
-<h3>Phone Charger</h3>
-
-<select id="chargerQty">
-<option value="200">R200</option>
-<option value="350">R350</option>
-</select>
-
-<button class="buy-btn"
-onclick="addToCart('Charger',document.getElementById('chargerQty').value)">
-Add to Cart
-</button>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- CART -->
-
-<section id="cart" class="hidden">
-
-<h2>Your Cart</h2>
-
-<div id="cartItems"></div>
-
-<p>Total: R<span id="cartTotal">0</span></p>
-
-<button class="pay-btn" onclick="checkoutCart()">Proceed to Pay</button>
-
-</section>
-
-
-<!-- PAYMENT -->
-
-<section id="payment" class="hidden">
-
-<h2>Pay Now</h2>
-
-<form action="https://www.payfast.co.za/eng/process" method="post" target="_blank">
-
-<input type="hidden" name="merchant_id" value="32218943">
-<input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">
-
-<input type="hidden" name="amount" id="payAmount">
-<input type="hidden" name="item_name" id="payItem">
-
-<button type="submit" class="pay-btn">
-Pay with PayFast
-</button>
-
-</form>
-
-</section>
-
-
-<script>
-
-/* SHOW SECTION */
-
-function showSection(id){
-
-const sections=["products","cart","payment"];
-
-sections.forEach(function(sec){
-
-document.getElementById(sec).style.display="none";
-
-});
-
-document.getElementById(id).style.display="block";
-
-}
-
-
-/* HOME */
-
-function scrollHome(){
-
-window.scrollTo({top:0,behavior:'smooth'});
-
-}
-
-
-/* CART SYSTEM */
-
-let cart=[];
-
-
-function addToCart(name,price){
-
-price=parseFloat(price);
-
-cart.push({
-name:name,
-price:price
-});
-
-updateCartUI();
-
-}
-
-
-function removeFromCart(index){
-
-cart.splice(index,1);
-
-updateCartUI();
-
-}
-
-
-function checkoutCart(){
-
-if(cart.length==0){
-
-alert("Your cart is empty");
-
-return;
-
-}
-
-const items=cart.map(item=>item.name).join(",");
-
-const total=cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
-
-document.getElementById("payItem").value=items;
-
-document.getElementById("payAmount").value=total;
-
-showSection("payment");
-
-}
-
-
-/* UPDATE CART */
-
-function updateCartUI(){
-
-const cartDiv=document.getElementById("cartItems");
-
-cartDiv.innerHTML="";
-
-let total=0;
-
-cart.forEach((item,index)=>{
-
-total+=item.price;
-
-cartDiv.innerHTML+=`
-
-<div style="background:rgba(255,255,255,0.08);padding:10px;margin:10px 0;border-radius:10px">
-
-${item.name} - R${item.price}
-
-<button onclick="removeFromCart(${index})">Remove</button>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("cartTotal").innerText=total;
-
-document.getElementById("cartCount").innerText=cart.length;
-
-}
-
-</script>
-
-</body>
- </html>
+<html lang="en">  
+<head>  
+ <link rel="manifest" href="manifest.json">  
+<meta name="theme-color" content="#2563eb">  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>ZiezGeek Aldevinc | Phone Repairs & Accessories</title>  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">  <style>  
+body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;scroll-behavior:smooth;}  
+.navbar{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 40px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:1000;}  
+.navbar .logo img{height:50px;}  
+.nav-links{list-style:none;display:flex;gap:25px;}  
+.nav-links li{list-style:none;}  
+.nav-links a{text-decoration:none;color:white;font-weight:500;font-size:16px;transition:.3s;}  
+.nav-links a:hover{color:#25D366;}  
+header{text-align:center;padding:160px 20px 100px;}  
+header h1{font-size:48px;text-shadow:0 0 20px #25D366;}  
+header .logo-img{width:160px;margin-bottom:20px;}  
+.glow-btn, .pay-btn, .buy-btn{background:#25D366;color:black;padding:14px 28px;border-radius:30px;font-weight:700;text-decoration:none;display:inline-block;margin-top:20px;box-shadow:0 0 10px #25D366;cursor:pointer;border:none;}  
+section{padding:70px 20px;max-width:1200px;margin:auto;}  
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}  
+.product-card{background:rgba(255,255,255,0.08);border-radius:20px;padding:20px;text-align:center;transition:.3s;}  
+.product-card img{width:100%;border-radius:15px;margin-bottom:15px;}  
+.product-card h3{color:#00ff9d;}  
+.product-card p{margin:10px 0;}  
+.product-card select{margin-top:10px;padding:8px;border-radius:5px;border:none;font-weight:500;}  
+.founder{background:rgba(255,255,255,0.08);border-radius:20px;padding:40px;margin-top:50px;line-height:1.6;}  
+.founder h2{color:#25D366;margin-bottom:15px;}  
+.founder button{background:#25D366;color:black;padding:10px 20px;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:15px;}  
+#aboutContent{display:none;margin-top:20px;line-height:1.6;transition:opacity 0.5s;}  
+#aboutContent.show{display:block;opacity:1;}  
+#cartItems div{display:flex;justify-content:space-between;align-items:center;}  
+footer{background:rgba(0,0,0,0.6);text-align:center;padding:40px 20px;margin-top:50px;}  
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;color:black;}  
+.review-card{background:rgba(255,255,255,0.08);border-radius:15px;padding:20px;margin-bottom:15px;}  
+</style>  <!-- Structured Data -->  <script type="application/ld+json">  
+{  
+ "@context":"https://schema.org",  
+ "@type":"Person",  
+ "name":"Nkosinathi Nhlanhla Sishuba Dlamini",  
+ "birthDate":"2002-07-07",  
+ "birthPlace":"Vosloorus, South Africa",  
+ "jobTitle":"Technician and Founder of ZiezGeek Aldevinc",  
+ "worksFor":{  
+   "@type":"Organization",  
+   "name":"ZiezGeek Aldevinc"  
+ },  
+ "url":"https://www.ziezgeekaldev.store"  
+}  
+</script>   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9944888585124357"  
+     crossorigin="anonymous"></script>  </head>  
+<body>  <!-- NAVBAR -->  <nav class="navbar">  
+  <div class="logo"><img src="logo.png" alt="ZiezGeek Logo"></div>  
+  <ul class="nav-links">  
+    <li><a href="#">Home</a></li>  
+    <li><a href="blog.html">Tech Tips</a></li>  
+    <li><a href="#services">Services</a></li>  
+    <li><a href="#products">Products</a></li>  
+    <li><a href="#prices">Prices</a></li>  
+    <li><a href="#reviews">Reviews</a></li>  
+    <li><a href="#founder">Founder</a></li>  
+    <li><a href="#payment">Pay</a></li>  
+    <li><a href="#contact">Contact</a></li>  
+  </ul>  
+</nav>  <!-- HEADER -->  <header>  
+  <img src="logo.png" alt="ZiezGeek Logo" class="logo-img">  
+  <h1>ZiezGeek Aldevinc 🚀</h1>  
+  <p>🔐 iCloud & Android Unlocking • 📱 iOS & Android Repairs</p>  
+  <p>🛠️ Hardware • Software • Solutions</p>  
+  <a class="glow-btn" href="https://wa.me/0719549523">Book Repair</a>  
+</header>  <!-- PRODUCTS -->  <section id="products">  
+<h2 style="text-align:center;margin-bottom:30px;">Our Products</h2>  
+<div class="products">  <div class="product-card">  
+<img src="screen-protector.jpg" alt="Screen Protector">  
+<h3>Screen Protectors</h3>  
+<p>Tempered glass to protect your screen.</p>  
+<select id="screenQty">  
+<option value="80">R80 - 1 piece</option>  
+<option value="150">R150 - 2 pieces</option>  
+</select>  
+<button class="buy-btn" onclick="addToCart('Screen Protector', document.getElementById('screenQty').value)">Add to Cart</button>  
+</div>  <div class="product-card">  
+<img src="phone-pouch.jpg" alt="Phone Pouch">  
+<h3>Phone Pouches</h3>  
+<p>Stylish and durable phone pouches.</p>  
+<select id="pouchQty">  
+<option value="100">R100 - 1 piece</option>  
+<option value="180">R180 - 2 pieces</option>  
+</select>  
+<button class="buy-btn" onclick="addToCart('Phone Pouches', document.getElementById('pouchQty').value)">Add to Cart</button>  
+</div>  <div class="product-card">  
+<img src="charger.jpg" alt="Charger">  
+<h3>Chargers</h3>  
+<p>Fast charging cables and adapters.</p>  
+<select id="chargerQty">  
+<option value="200">R200 - 1 piece</option>  
+<option value="350">R350 - 2 pieces</option>  
+</select>  
+<button class="buy-btn" onclick="addToCart('Chargers', document.getElementById('chargerQty').value)">Add to Cart</button>  
+</div>  <div class="product-card">  
+<img src="other-electronics.jpg" alt="Other Electronics">  
+<h3>Other Electronics</h3>  
+<p>Cables, earphones, and accessories.</p>  
+<select id="otherQty">  
+<option value="80">R80 - 1 item</option>  
+<option value="150">R150 - 2 items</option>  
+</select>  
+<button class="buy-btn" onclick="addToCart('Other Electronics', document.getElementById('otherQty').value)">Add to Cart</button>  
+</div>  </div>  
+</section>  <!-- CART -->  <section id="cart" style="padding:70px 20px; max-width:1200px; margin:auto;">  
+<h2 style="text-align:center;margin-bottom:30px;">Your Cart 🛒</h2>  
+<div id="cartItems" style="display:grid; gap:15px; margin-bottom:20px;"></div>  
+<p style="text-align:right;font-size:18px;">Total: R<span id="cartTotal">0</span></p>  
+<button class="pay-btn" onclick="checkoutCart()">Proceed to Pay</button>  
+</section>  <!-- FOUNDER -->  <section id="founder" class="founder">  
+<h2>About the Founder</h2>  
+<p>Nkosinathi Nhlanhla Sishuba Dlamini – Founder of ZiezGeek</p>  
+<button onclick="toggleAbout()">Read More</button>  
+<div id="aboutContent">  
+<p>Born 07 July 2002, Vosloorus. Passionate about tech from Grade 9, fixing and unlocking devices. After matric, started ZiezGeek Aldevinc offering repairs and accessories.</p>  
+</div>  
+</section>  <!-- REVIEWS -->  <section id="reviews">  
+<h2 style="text-align:center;margin-bottom:30px;">Client Reviews ⭐</h2>  
+<div class="review-card">"Fast and reliable service!" - Thabo M</div>  
+<div class="review-card">"My phone was fixed same day." - Lerato K</div>  
+<div class="review-card">"Best unlocking service." - Sibusiso N</div>  
+</section>  <!-- PAYMENT -->  <section id="payment" style="text-align:center;margin-top:50px;">  
+<h2>Pay for Selected Product</h2>  
+<form id="payForm" action="https://www.payfast.co.za/eng/process" method="post" target="_blank">  
+<input type="hidden" name="merchant_id" value="32218943">  
+<input type="hidden" name="merchant_key" value="rmmpojhtpdpvv">  
+<input type="hidden" name="amount" id="payAmount" value="">  
+<input type="hidden" name="item_name" id="payItem" value="">  
+<button type="submit" class="pay-btn">Pay Now</button>  
+</form>  
+</section>  <!-- FOOTER -->  <footer>  
+<p>© 2026 ZiezGeek Aldevinc | Vosloorus</p>  
+</footer>  <!-- WhatsApp -->  <a class="whatsapp" href="https://wa.me/0814382017">💬</a>
+
+<script>  
+// CART  
+let cart = [];  
+function addToCart(name, price){  
+  cart.push({name:name, price:parseFloat(price)});  
+  updateCartUI();  
+}  
+function updateCartUI(){  
+  const cartDiv=document.getElementById('cartItems');  
+  cartDiv.innerHTML='';  
+  let total=0;  
+  cart.forEach((item,index)=>{  
+    total+=item.price;  
+    cartDiv.innerHTML+=`  
+    <div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;">  
+      <span>${item.name} - R${item.price}</span>  
+      <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>  
+    </div>`;  
+  });  
+  document.getElementById('cartTotal').innerText=total.toFixed(2);  
+}  
+function removeFromCart(index){  
+  cart.splice(index,1);  
+  updateCartUI();  
+}  
+function checkoutCart(){  
+  if(cart.length===0){alert("Your cart is empty!"); return;}  
+  const items=cart.map(item=>item.name).join(", ");  
+  const total=cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);  
+  document.getElementById('payItem').value=items;  
+  document.getElementById('payAmount').value=total;  
+  alert("Cart ready! Scroll down to Pay Now to complete the payment.");  
+  document.getElementById('payment').scrollIntoView({behavior:'smooth'});  
+}  
+  
+// FOUNDER  
+function toggleAbout(){  
+  var content=document.getElementById("aboutContent");  
+  content.style.display=(content.style.display==="none"||content.style.display==="")?"block":"none";  
+}  
+</script>   <script>  
+if ('serviceWorker' in navigator) {  
+  navigator.serviceWorker.register('sw.js')  
+    .then(function() {  
+      console.log("Service Worker Registered");  
+    });  
+}  
+ </script>  </body>  
+</html>  
