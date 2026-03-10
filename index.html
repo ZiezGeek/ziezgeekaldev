@@ -210,7 +210,74 @@ window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* CART */
+/* CART */
+
+let cart = [];
+
+function addToCart(name, price){
+
+price = parseFloat(price);
+
+cart.push({
+name: name,
+price: price
+});
+
+updateCartUI();
+
+}
+
+function removeFromCart(index){
+
+cart.splice(index,1);
+
+updateCartUI();
+
+}
+
+function checkoutCart(){
+
+if(cart.length === 0){
+alert("Your cart is empty!");
+return;
+}
+
+const items = cart.map(item => item.name).join(", ");
+const total = cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
+
+document.getElementById("payItem").value = items;
+document.getElementById("payAmount").value = total;
+
+showSection("payment");
+
+}
+
 function updateCartUI(){
+
+const cartDiv = document.getElementById('cartItems');
+cartDiv.innerHTML='';
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+total += item.price;
+
+cartDiv.innerHTML += `
+<div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;margin-bottom:10px;">
+<span>${item.name} - R${item.price}</span>
+<button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
+</div>
+`;
+
+});
+
+document.getElementById('cartTotal').innerText = total.toFixed(2);
+
+/* CART NUMBER */
+document.getElementById("cartCount").innerText = cart.length;
+
+ }
 
 const cartDiv = document.getElementById('cartItems');
 cartDiv.innerHTML='';
