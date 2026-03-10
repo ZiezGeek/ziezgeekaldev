@@ -73,7 +73,11 @@ crossorigin="anonymous"></script>
 <li><a onclick="scrollHome()">Home</a></li>
 <li><a href="blog.html">Tech Tips</a></li>
 <li><a onclick="showSection('products')">Products</a></li>
-<li><a onclick="showSection('cart')">Cart</a></li>
+<li>
+<a onclick="showSection('cart')">
+🛒 Cart (<span id="cartCount">0</span>)
+</a>
+</li>
 <li><a onclick="showSection('reviews')">Reviews</a></li>
 <li><a onclick="showSection('founder')">Founder</a></li>
 <li><a onclick="showSection('payment')">Pay</a></li>
@@ -206,43 +210,32 @@ window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* CART */
-let cart=[];
-function addToCart(name,price){
-cart.push({name:name,price:parseFloat(price)});
-updateCartUI();
-}
-
 function updateCartUI(){
-const cartDiv=document.getElementById('cartItems');
+
+const cartDiv = document.getElementById('cartItems');
 cartDiv.innerHTML='';
-let total=0;
+
+let total = 0;
 
 cart.forEach((item,index)=>{
-total+=item.price;
-cartDiv.innerHTML+=`
-<div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;">
+
+total += item.price;
+
+cartDiv.innerHTML += `
+<div style="background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;margin-bottom:10px;">
 <span>${item.name} - R${item.price}</span>
 <button style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;" onclick="removeFromCart(${index})">Remove</button>
-</div>`;
+</div>
+`;
+
 });
 
-document.getElementById('cartTotal').innerText=total.toFixed(2);
-}
+document.getElementById('cartTotal').innerText = total.toFixed(2);
 
-function removeFromCart(index){
-cart.splice(index,1);
-updateCartUI();
-}
+/* CART NUMBER */
+document.getElementById("cartCount").innerText = cart.length;
 
-function checkoutCart(){
-if(cart.length===0){alert("Your cart is empty!");return;}
-const items=cart.map(item=>item.name).join(", ");
-const total=cart.reduce((sum,item)=>sum+item.price,0).toFixed(2);
-document.getElementById('payItem').value=items;
-document.getElementById('payAmount').value=total;
-showSection("payment");
 }
-
 /* FOUNDER */
 function toggleAbout(){
 var content=document.getElementById("aboutContent");
