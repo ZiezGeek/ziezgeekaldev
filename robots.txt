@@ -1,0 +1,11 @@
+# ZiezGeek Aldevinc – robots.txt
+# https://www.ziezgeekaldev.store
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.ziezgeekaldev.store/sitemap.xml
+
+# Disallow admin or private paths (add any if needed)
+# Disallow: /private/
