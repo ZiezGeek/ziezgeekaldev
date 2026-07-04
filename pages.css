@@ -1,0 +1,210 @@
+/* ZiezGeek Aldevinc – Pages (Services, Products, Cart, Reviews, Founder, Contact) */
+/* ============================================= */
+
+
+
+/* ===== SERVICES SECTION ===== */
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;
+}
+.service-card{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:20px;padding:30px 20px;text-align:center;
+  transition:.3s;cursor:default;
+}
+.service-card:hover{
+  transform:translateY(-8px);border-color:var(--neon);
+  box-shadow:0 0 30px rgba(0,255,157,0.1);
+}
+.service-icon{
+  font-size:2.5rem;margin-bottom:18px;
+  background:linear-gradient(135deg,var(--neon),var(--neon2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.service-card h3{font-size:1.1rem;font-weight:700;color:#e0e0e0;letter-spacing:1px;margin-bottom:10px;}
+.service-card p{font-size:0.9rem;color:#888;line-height:1.6;}
+
+/* ===== PRODUCTS ===== */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+
+.product-card{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:20px;padding:25px;text-align:center;
+  transition:.4s;overflow:hidden;position:relative;
+}
+.product-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,255,157,0.05),transparent);
+  opacity:0;transition:.3s;
+}
+.product-card:hover{
+  transform:translateY(-10px);border-color:rgba(0,255,157,0.4);
+  box-shadow:0 20px 60px rgba(0,255,157,0.1);
+}
+.product-card:hover::before{opacity:1;}
+
+.product-card img{
+  width:100%;height:200px;object-fit:cover;border-radius:12px;
+  margin-bottom:18px;transition:.3s;
+}
+.product-card:hover img{transform:scale(1.03);}
+
+.product-card h3{
+  color:var(--neon);font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-bottom:8px;
+}
+.product-card p{font-size:0.9rem;color:#888;line-height:1.5;margin-bottom:15px;}
+
+.product-card select{
+  width:100%;padding:10px 15px;border-radius:10px;border:1px solid var(--card-border);
+  background:rgba(255,255,255,0.05);color:#e0e0e0;
+  font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;
+  outline:none;cursor:pointer;margin-bottom:15px;
+  appearance:none;position:relative;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300ff9d' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  padding-right:35px;
+}
+.product-card select:focus{border-color:var(--neon);}
+.product-card select option{background:#0d1f2d;color:#e0e0e0;}
+
+.buy-btn{
+  width:100%;background:linear-gradient(135deg,var(--neon),var(--neon2));
+  color:#040d10;padding:12px;border-radius:12px;
+  font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;border:none;font-family:'Rajdhani',sans-serif;
+  transition:.3s;display:flex;align-items:center;justify-content:center;gap:8px;
+  position:relative;z-index:1;
+}
+.buy-btn:hover{box-shadow:0 0 20px rgba(0,255,157,0.5);transform:scale(1.02);}
+.buy-btn:active{transform:scale(0.98);}
+
+/* Added to cart animation */
+@keyframes addedPop{
+  0%{background:linear-gradient(135deg,var(--neon3),#ff4500);}
+  100%{background:linear-gradient(135deg,var(--neon),var(--neon2));}
+}
+
+/* ===== CART ===== */
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--card);border:1px solid var(--card-border);
+  padding:16px 20px;border-radius:14px;margin-bottom:12px;
+  animation:slideRight .3s ease;
+}
+@keyframes slideRight{from{transform:translateX(-20px);opacity:0;} to{transform:translateX(0);opacity:1;}}
+
+.cart-item-name{font-weight:600;font-size:1rem;color:#e0e0e0;}
+.cart-item-price{color:var(--neon);font-family:'Orbitron',sans-serif;font-size:0.9rem;font-weight:700;}
+.remove-btn{
+  background:rgba(255,107,53,0.15);color:var(--neon3);
+  border:1px solid rgba(255,107,53,0.3);padding:6px 14px;
+  border-radius:8px;cursor:pointer;font-family:'Rajdhani',sans-serif;
+  font-weight:600;font-size:13px;transition:.2s;
+}
+.remove-btn:hover{background:rgba(255,107,53,0.3);}
+
+.cart-summary{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:16px;padding:25px;margin-top:20px;
+}
+.cart-total-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:1.2rem;font-weight:700;
+}
+.cart-total-amount{
+  font-family:'Orbitron',sans-serif;color:var(--neon);font-size:1.4rem;
+}
+
+/* ===== FOUNDER ===== */
+.founder-wrapper{
+  display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:start;
+}
+@media(max-width:700px){.founder-wrapper{grid-template-columns:1fr;}}
+
+.founder-image-wrap{
+  position:relative;
+}
+.founder-img{
+  width:100%;border-radius:20px;
+  border:2px solid var(--neon);
+  box-shadow:0 0 40px rgba(0,255,157,0.2),0 0 80px rgba(0,255,157,0.08);
+  object-fit:cover;
+}
+.founder-badge{
+  position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--neon),var(--neon2));
+  color:#040d10;padding:8px 20px;border-radius:50px;
+  font-weight:700;font-size:13px;letter-spacing:1px;white-space:nowrap;
+}
+
+.founder-content h2{
+  font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:700;
+  color:var(--neon);margin-bottom:8px;letter-spacing:2px;
+}
+.founder-content .founder-role{color:#666;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.founder-content p{color:#aaa;line-height:1.8;font-size:1rem;margin-bottom:15px;}
+
+.founder-skills{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;}
+.skill-tag{
+  background:rgba(0,255,157,0.08);border:1px solid rgba(0,255,157,0.2);
+  color:var(--neon);padding:6px 14px;border-radius:50px;font-size:13px;font-weight:600;
+}
+
+.read-more-btn{
+  background:transparent;color:var(--neon);
+  border:1.5px solid var(--neon);padding:10px 25px;border-radius:10px;
+  font-weight:600;cursor:pointer;font-family:'Rajdhani',sans-serif;
+  font-size:14px;letter-spacing:1px;text-transform:uppercase;transition:.3s;
+}
+.read-more-btn:hover{background:rgba(0,255,157,0.1);}
+
+.founder-extra{
+  margin-top:20px;color:#888;line-height:1.8;
+  border-left:2px solid var(--neon);padding-left:20px;
+  display:none;
+}
+
+/* ===== REVIEWS ===== */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.review-card{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:18px;padding:25px;transition:.3s;
+}
+.review-card:hover{border-color:rgba(0,255,157,0.3);transform:translateY(-5px);}
+.review-stars{color:#ffd700;font-size:1rem;margin-bottom:12px;letter-spacing:2px;}
+.review-text{color:#bbb;line-height:1.7;font-size:0.95rem;margin-bottom:15px;font-style:italic;}
+.review-author{color:var(--neon);font-weight:700;font-size:0.9rem;letter-spacing:1px;}
+
+/* ===== PAYMENT ===== */
+.payment-box{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:20px;padding:40px;max-width:500px;margin:auto;text-align:center;
+}
+.payment-box h3{font-family:'Orbitron',sans-serif;color:var(--neon);margin-bottom:20px;font-size:1.3rem;}
+.payment-box .pay-amount{
+  font-family:'Orbitron',sans-serif;font-size:2.5rem;color:white;margin:20px 0;
+}
+.pay-btn{
+  width:100%;background:linear-gradient(135deg,var(--neon),var(--neon2));
+  color:#040d10;padding:16px;border-radius:12px;
+  font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;border:none;font-family:'Rajdhani',sans-serif;
+  transition:.3s;margin-top:15px;
+}
+.pay-btn:hover{box-shadow:0 0 30px rgba(0,255,157,0.5);}
+
+/* ===== CONTACT / FAQ ===== */
+.faq-item{
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:14px;margin-bottom:12px;overflow:hidden;
+}
+.faq-question{
+  padding:18px 25px;cursor:pointer;font-weight:600;font-size:1rem;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:.2s;
+}
+.faq-question:hover{color:var(--neon);}
+.faq-arrow{transition:.3s;color:var(--neon);}
+.faq-answer{
+  display:none;padding:0 25px 18px;color:#888;line-height:1.7;font-size:0.9rem;
+}

@@ -1,0 +1,36 @@
+/* ZiezGeek Aldevinc – Base Styles (Variables, Reset, Typography) */
+/* ============================================= */
+
+:root{
+  --neon: #00ff9d;
+  --neon2: #00d4ff;
+  --neon3: #ff6b35;
+  --dark: #040d10;
+  --dark2: #081820;
+  --card: rgba(0,255,157,0.05);
+  --card-border: rgba(0,255,157,0.15);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Rajdhani',sans-serif;
+  background:var(--dark);
+  color:#e0e0e0;
+  overflow-x:hidden;
+}
+
+/* Animated grid background */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,255,157,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,157,0.03) 1px, transparent 1px);
+  background-size:50px 50px;
+  pointer-events:none;
+  z-index:0;
+}

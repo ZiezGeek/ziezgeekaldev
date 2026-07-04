@@ -1,0 +1,516 @@
+/* ZiezGeek Aldevinc – Features (Booking, Pricing, Gallery) */
+/* ============================================= */
+
+
+
+/* ===== BOOKING PAGE ===== */
+.booking-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: auto;
+}
+@media(max-width: 700px) {
+  .booking-box { grid-template-columns: 1fr; }
+}
+
+.booking-form-wrap {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.booking-field {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.booking-field label {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+.booking-field input,
+.booking-field select,
+.booking-field textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #e0e0e0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: .3s;
+}
+.booking-field input:focus,
+.booking-field select:focus,
+.booking-field textarea:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 10px rgba(0,255,157,0.1);
+}
+.booking-field select option { background: #0d1f2d; }
+.booking-field textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+.booking-field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.5);
+  cursor: pointer;
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 5px;
+}
+.booking-info h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--neon);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.booking-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.bstep-num {
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  color: #040d10;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.booking-step strong {
+  color: #e0e0e0;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 3px;
+}
+.booking-step p {
+  color: #666;
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.booking-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #888;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.booking-note i { color: var(--neon); }
+
+/* ===== PRICING PAGE ===== */
+.pricing-note {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 14px;
+  padding: 16px 22px;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pricing-note i { color: var(--neon2); font-size: 1.2rem; flex-shrink: 0; }
+.pricing-note strong { color: #e0e0e0; }
+
+.pricing-category {
+  margin-bottom: 55px;
+}
+.pricing-category-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--neon2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 25px 22px;
+  text-align: center;
+  transition: .3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,255,157,0.35);
+  box-shadow: 0 15px 40px rgba(0,255,157,0.08);
+}
+.price-card.popular {
+  border-color: var(--neon);
+  box-shadow: 0 0 25px rgba(0,255,157,0.12);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  color: #040d10;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.price-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+.price-card h3 {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.price-card p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+  flex: 1;
+}
+.price-amount {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--neon);
+  margin: 6px 0 2px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+.price-from {
+  font-size: 11px;
+  color: #555;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+.price-time {
+  color: #555;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.price-time i { color: var(--neon2); }
+
+.price-book-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.price-book-btn:hover {
+  background: rgba(0,255,157,0.1);
+  box-shadow: 0 0 15px rgba(0,255,157,0.2);
+}
+
+/* ===== GALLERY PAGE ===== */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.gfilter {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: #888;
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s;
+}
+.gfilter:hover, .gfilter.active {
+  background: rgba(0,255,157,0.1);
+  border-color: var(--neon);
+  color: var(--neon);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+.gallery-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: .3s;
+}
+.gallery-card:hover {
+  border-color: rgba(0,255,157,0.3);
+  box-shadow: 0 15px 40px rgba(0,255,157,0.07);
+  transform: translateY(-4px);
+}
+.gallery-card.hidden { display: none; }
+
+/* Before/After Slider */
+.ba-slider {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+}
+.ba-after, .ba-before {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ba-after { width: 100%; }
+.ba-before {
+  width: 50%;
+  overflow: hidden;
+  border-right: 2px solid var(--neon);
+  z-index: 2;
+}
+
+.ba-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.before-placeholder {
+  background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,0,0,0.03));
+}
+.after-placeholder {
+  background: linear-gradient(135deg, rgba(0,255,157,0.08), rgba(0,212,255,0.03));
+}
+.ba-placeholder i {
+  font-size: 2.5rem;
+  color: var(--neon);
+  opacity: 0.6;
+}
+.before-placeholder i { color: #ff6b35; }
+.ba-placeholder span {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #555;
+}
+.ba-placeholder p {
+  color: #444;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  cursor: ew-resize;
+}
+.handle-line {
+  width: 2px;
+  flex: 1;
+  background: var(--neon);
+  opacity: 0.6;
+}
+.handle-circle {
+  width: 36px;
+  height: 36px;
+  background: var(--neon);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #040d10;
+  font-size: 14px;
+  box-shadow: 0 0 15px rgba(0,255,157,0.5);
+  flex-shrink: 0;
+}
+
+.ba-label {
+  position: absolute;
+  top: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  z-index: 4;
+  pointer-events: none;
+}
+.ba-label-before {
+  left: 12px;
+  background: rgba(255,107,53,0.2);
+  color: #ff6b35;
+  border: 1px solid rgba(255,107,53,0.3);
+}
+.ba-label-after {
+  right: 12px;
+  background: rgba(0,255,157,0.15);
+  color: var(--neon);
+  border: 1px solid rgba(0,255,157,0.2);
+}
+
+.gallery-card-info {
+  padding: 18px 20px 20px;
+}
+.gallery-card-info h3 {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.gallery-card-info p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.gallery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gtag {
+  background: rgba(0,255,157,0.07);
+  border: 1px solid rgba(0,255,157,0.15);
+  color: var(--neon);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+.gtag-time {
+  background: rgba(0,212,255,0.07);
+  border-color: rgba(0,212,255,0.15);
+  color: var(--neon2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Gallery CTA */
+.gallery-upload-cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(0,255,157,0.05);
+  border: 1px solid rgba(0,255,157,0.15);
+  border-radius: 18px;
+  padding: 25px 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.gallery-upload-cta > i {
+  font-size: 2rem;
+  color: var(--neon);
+  flex-shrink: 0;
+}
+.gallery-upload-cta > div { flex: 1; min-width: 200px; }
+.gallery-upload-cta strong {
+  display: block;
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.gallery-upload-cta p {
+  color: #666;
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5;
+}
